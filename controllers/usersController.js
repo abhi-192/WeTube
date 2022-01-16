@@ -5,7 +5,7 @@ const postLogin = (req,res) => {
     res.redirect(routes.home);
 }
 
-const logout = (req,res) => res.render('logout', { pageTitle: "Log Out" });
+const logout = (req,res) => res.redirect(routes.home);
 
 const getJoin = (req,res) => res.render('join', { pageTitle: "Join" });
 const postJoin = (req,res) => {

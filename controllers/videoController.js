@@ -7,7 +7,13 @@ const search = (req,res) => {
 }
 
 const videos = (req,res) => res.render('video', { pageTitle: "Video" });
-const upload = (req,res) => res.render('upload',  { pageTitle: "Upload" });
+
+const getUpload = (req,res) => res.render('upload',  { pageTitle: "Upload" });
+const postUpload = (req,res) => {
+    const { body : { file, title, description} } = req;
+    // TO DO: Upload and save video
+}
+
 const videoDetail = (req,res) => res.render('videoDetail', { pageTitle: "Video Detail" });
 const editVideo = (req,res) => res.render('editVideo', { pageTitle: "Edit Video" });
 const deleteVideo = (req,res) => res.render('deleteVideo', { pageTitle: "Delete Video" });
@@ -17,7 +23,8 @@ module.exports = {
     home,
     search,
     videos,
-    upload,
+    getUpload,
+    postUpload,
     videoDetail,
     editVideo,
     deleteVideo
