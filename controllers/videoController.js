@@ -1,8 +1,11 @@
-const home = (req,res) => res.render("home", { pageTitle: "Home" });
+const videosArr = require('../db');
+const home = (req,res) => res.render("home", { pageTitle: "Home",  videosArr });
+
 const search = (req,res) => {   
     const { query: { term: searchingBy } } = req;
-    res.render('search', { pageTitle: "Search" , searchingBy });
+    res.render('search', { pageTitle: "Search" , searchingBy, videosArr });
 }
+
 const videos = (req,res) => res.render('video', { pageTitle: "Video" });
 const upload = (req,res) => res.render('upload',  { pageTitle: "Upload" });
 const videoDetail = (req,res) => res.render('videoDetail', { pageTitle: "Video Detail" });
