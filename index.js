@@ -10,6 +10,8 @@ const routes = require('./routes');
 const localsMiddleware = require('./middlewares')
 const db = require('./db');
 const dotenv = require('dotenv');
+const Video = require('./models/Video');
+const Comment = require('./models/Comment')
 const app = express();
 
 const PORT = process.env.PORT || 3000;
