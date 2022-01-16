@@ -1,4 +1,4 @@
-const videosArr = require('../db');
+//const videosArr = require('../db');
 const routes = require('../routes');
 const home = (req,res) => res.render("home", { pageTitle: "Home",  videosArr });
 

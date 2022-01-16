@@ -8,7 +8,11 @@ const userRouter = require('./routers/userRouter');
 const videoRouter = require('./routers/videoRouter');
 const routes = require('./routes');
 const localsMiddleware = require('./middlewares')
+const db = require('./db');
+const dotenv = require('dotenv');
 const app = express();
+
+const PORT = process.env.PORT || 3000;
 
 const handleListening = () => console.log("Listening on port http://localhost:3000");
 
@@ -26,8 +30,8 @@ app.use(morgan("dev"));
 
 //app.get("/",handleRequest);
 
-app.use(routes.home,globalRouter);
-app.use(routes.users,userRouter);
-app.use(routes.videos,videoRouter);
+app.use(routes.home, globalRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
-app.listen(3000,handleListening); 
+app.listen(PORT, handleListening); 
