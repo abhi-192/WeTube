@@ -1,4 +1,5 @@
 const videosArr = require('../db');
+const routes = require('../routes');
 const home = (req,res) => res.render("home", { pageTitle: "Home",  videosArr });
 
 const search = (req,res) => {   
@@ -12,6 +13,7 @@ const getUpload = (req,res) => res.render('upload',  { pageTitle: "Upload" });
 const postUpload = (req,res) => {
     const { body : { file, title, description} } = req;
     // TO DO: Upload and save video
+    res.redirect(routes.videoDetail(123));
 }
 
 const videoDetail = (req,res) => res.render('videoDetail', { pageTitle: "Video Detail" });
