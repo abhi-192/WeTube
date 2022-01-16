@@ -6,6 +6,6 @@ const routes = require('../routes');
 userRouter.get(routes.users, users);
 userRouter.get(routes.editProfile, editProfile);
 userRouter.get(routes.changePassword, changePassword);
-userRouter.get(routes.userDetails, userDetails);
+userRouter.get(routes.userDetails(), userDetails);
 
 module.exports = userRouter;
