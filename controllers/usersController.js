@@ -1,6 +1,10 @@
 const routes = require('../routes')
 
-const login = (req,res) => res.render('login', { pageTitle: "Log In" });
+const getLogin = (req,res) => res.render('login', { pageTitle: "Log In" });
+const postLogin = (req,res) => {
+    res.redirect(routes.home);
+}
+
 const logout = (req,res) => res.render('logout', { pageTitle: "Log Out" });
 
 const getJoin = (req,res) => res.render('join', { pageTitle: "Join" });
@@ -27,7 +31,8 @@ const changePassword = (req,res) => res.render('changePassword', { pageTitle: "C
 
 
 module.exports = {
-    login,
+    getLogin,
+    postLogin,
     logout,
     getJoin,
     postJoin,
