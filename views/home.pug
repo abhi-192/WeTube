@@ -2,8 +2,8 @@ extends layouts/main
 include mixins/videoBlock
 
 block content
-    .videosArr
-        each item in videosArr
+    .videos
+        each item in videos
             +videoBlock({
                 id: item.id,
                 title: item.title,

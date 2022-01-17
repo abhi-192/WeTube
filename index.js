@@ -7,11 +7,11 @@ const globalRouter = require('./routers/globalRouter');
 const userRouter = require('./routers/userRouter');
 const videoRouter = require('./routers/videoRouter');
 const routes = require('./routes');
-const localsMiddleware = require('./middlewares')
-const db = require('./db');
+const middleware = require('./middlewares');
 const dotenv = require('dotenv');
-const Video = require('./models/Video');
-const Comment = require('./models/Comment')
+import "./db";
+import './models/Video';
+import './models/Comment';
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -24,10 +24,12 @@ const handleRequest = (req,res) => {
 
 app.use(helmet());
 app.set('view engine',"pug");
+app.use("/uploads", express.static("uploads"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true } ));
-app.use(localsMiddleware);
+app.use(middleware.localsMiddleware);
+app.use(middleware.uploadVideo);
 app.use(morgan("dev"));
 
 //app.get("/",handleRequest);
