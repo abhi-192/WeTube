@@ -12,6 +12,7 @@ const dotenv = require('dotenv');
 import "./db";
 import './models/Video';
 import './models/Comment';
+import './models/User';
 const app = express();
 
 const PORT = process.env.PORT || 3000;
