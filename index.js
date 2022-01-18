@@ -13,6 +13,9 @@ import "./db";
 import './models/Video';
 import './models/Comment';
 import './models/User';
+import passport from "passport";
+import session from "express-session";
+import "./passport";
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -32,6 +35,13 @@ app.use(bodyParser.urlencoded( { extended: true } ));
 app.use(middleware.localsMiddleware);
 app.use(middleware.uploadVideo);
 app.use(morgan("dev"));
+app.use(session({
+    secret: process.env.COOKIE_SECRET,
+    resave: true,
+    saveUnintialized: false
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
 //app.get("/",handleRequest);
 

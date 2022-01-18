@@ -1,4 +1,4 @@
- const express = require('express');
+const express = require('express');
 const { logout, getLogin, postLogin, getJoin, postJoin } = require('../controllers/usersController');
 const { home, search} = require('../controllers/videoController')
 const globalRouter = express.Router();
@@ -12,7 +12,7 @@ globalRouter.post(routes.login, postLogin);
 globalRouter.get(routes.logout, logout);
 
 globalRouter.get(routes.join, getJoin);
-globalRouter.post(routes.join, postJoin);
+globalRouter.post(routes.join, postJoin, postLogin);
 
 globalRouter.get(routes.search, search);
 
