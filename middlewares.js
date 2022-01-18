@@ -17,10 +17,18 @@ const onlyPublic = (req, res, next) => {
         next();
 }
 
+const onlyPrivate = (req,res,next) => {
+    if(req.user)
+        next();
+    else
+        res.redirect(routes.home);
+}
+
 const uploadVideo = multerVideo.single("videoFile");
 
 module.exports = {
     localsMiddleware,
     uploadVideo,
-    onlyPublic
+    onlyPublic,
+    onlyPrivate
 };
