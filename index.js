@@ -15,6 +15,8 @@ import './models/Comment';
 import './models/User';
 import passport from "passport";
 import session from "express-session";
+import MongoStore from "connect-mongo";
+import mongoose from "mongoose";
 import "./passport";
 const app = express();
 
@@ -25,6 +27,8 @@ const handleListening = () => console.log("Listening on port http://localhost:30
 const handleRequest = (req,res) => {
     res.send("Hello from server");
 }
+
+const CookieStore = MongoStore(session);
 
 app.use(helmet());
 app.set('view engine',"pug");
@@ -38,8 +42,9 @@ app.use(morgan("dev"));
 app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: true,
-    saveUnintialized: false
-}))
+    saveUnintialized: false,
+    store: new CookieStore({ mongooseConnection: mongoose.connection });
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 

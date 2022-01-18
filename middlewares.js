@@ -10,9 +10,17 @@ const localsMiddleware = (req,res,next) => {
     next();
 }
 
+const onlyPublic = (req, res, next) => {
+    if(req.user)
+        res.redirect(routes.home);
+    else
+        next();
+}
+
 const uploadVideo = multerVideo.single("videoFile");
 
 module.exports = {
     localsMiddleware,
-    uploadVideo
+    uploadVideo,
+    onlyPublic
 };
