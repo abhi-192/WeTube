@@ -60,7 +60,11 @@ const getEditVideo = async (req, res) => {
     const { params: { id } } = req;
     try {
         const video = await Video.findById(id);
-        res.render('editVideo', { pageTitle: `Edit ${video.title}`, video });
+        if (video.creator !== req.user.id) {
+            throw Error();
+        }
+        else
+            res.render('editVideo', { pageTitle: `Edit ${video.title}`, video });
     }
     catch (error) {
         console.log('Error', error);
@@ -83,7 +87,15 @@ const postEditVideo = async (req, res) => {
 const deleteVideo = async (req, res) => {
     const { params: { id } } = req;
     try {
-        await Video.findOneAndRemove({ _id: id });
+        const video = await Video.findById(id);
+        if (video.creator !== req.user.id) {
+            throw Error();
+        }
+        else {
+            await Video.findOneAndRemove({ _id: id });
+            // res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
+        }
+
     }
     catch (error) {
         console.log('Error', error);

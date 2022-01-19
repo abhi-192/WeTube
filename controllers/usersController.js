@@ -106,7 +106,7 @@ const users = (req, res) => res.render('user', { pageTitle: "User" });
 const userDetails = async (req, res) => {
     const { params: { id } } = req;
     try {
-        const user = await User.findById(id);
+        const user = await User.findById(id).populate('videos');
         res.render('userDetails', { pageTitle: "User Details" });
     }
     catch (error) {
