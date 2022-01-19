@@ -1,0 +1,7 @@
+extend layouts/main
+
+block content
+    .user-profile
+        .user-profile__header
+            img.avatar(src=user.avatarUrl)
+            hd.prodile__username=user.name

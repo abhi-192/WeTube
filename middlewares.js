@@ -3,22 +3,22 @@ const multer = require('multer');
 
 const multerVideo = multer({ dest: "uploads/videos/" });
 
-const localsMiddleware = (req,res,next) => {
+const localsMiddleware = (req, res, next) => {
     res.locals.siteName = 'WeTube';
     res.locals.routes = routes;
-    res.locals.user = req.user || {} ;
+    res.locals.loggedUser = req.user || {};
     next();
 }
 
 const onlyPublic = (req, res, next) => {
-    if(req.user)
+    if (req.user)
         res.redirect(routes.home);
     else
         next();
 }
 
-const onlyPrivate = (req,res,next) => {
-    if(req.user)
+const onlyPrivate = (req, res, next) => {
+    if (req.user)
         next();
     else
         res.redirect(routes.home);

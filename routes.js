@@ -4,6 +4,7 @@ const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
 const SEARCH = "/search";
+const ME = "/me";
 
 //USERS ROUTES
 const USERS = "/users";
@@ -30,7 +31,7 @@ const routes = {
     search: SEARCH,
     users: USERS,
     userDetails: (id) => {
-        if(id)
+        if (id)
             return `users/${id}`;
         else
             return USER_DETAIL;
@@ -40,25 +41,26 @@ const routes = {
     videos: VIDEOS,
     upload: UPLOAD,
     videoDetail: (id) => {
-        if(id)
+        if (id)
             return `/videos/${id}`;
         else
             return VIDEO_DETAIL;
     },
     editVideo: (id) => {
-        if(id)
+        if (id)
             return `/videos/${id}/edit`;
         else
             return EDIT_VIDEO;
     },
     deleteVideo: (id) => {
-        if(id)
+        if (id)
             return `/videos/${id}/delete`;
         else
             return DELETE_VIDEO
     },
     github: GITHUB,
-    githubLoginCallback: GITHUB_CALLBACK
+    githubLoginCallback: GITHUB_CALLBACK,
+    me: ME
 };
 
 module.exports = routes;
