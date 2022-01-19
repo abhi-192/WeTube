@@ -7,7 +7,7 @@ import { onlyPrivate } from "../middlewares";
 
 videoRouter.get(routes.videos, videos);
 
-videoRouter.get(routes.upload, onlyPrivate,  getUpload);
+videoRouter.get(routes.upload, onlyPrivate, getUpload);
 videoRouter.post(routes.upload, onlyPrivate, uploadVideo, postUpload);
 
 videoRouter.get(routes.videoDetail(), videoDetail);

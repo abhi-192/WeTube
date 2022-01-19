@@ -16,6 +16,10 @@ const USER_DETAIL = "/:id";
 const GITHUB = "/auth/github/";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
+//FACEBOOK
+const FACEBOOK = "/auth/facebook";
+const FACEBOOK_CALLBACK = "/auth/facebook/callback";
+
 //VIDEO ROUTES
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
@@ -60,7 +64,9 @@ const routes = {
     },
     github: GITHUB,
     githubLoginCallback: GITHUB_CALLBACK,
-    me: ME
+    me: ME,
+    facebook: FACEBOOK,
+    facebookCallback: FACEBOOK_CALLBACK
 };
 
 module.exports = routes;
