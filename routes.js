@@ -12,6 +12,13 @@ const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 const USER_DETAIL = "/:id";
 
+//VIDEO ROUTES
+const VIDEOS = "/videos";
+const UPLOAD = "/upload";
+const VIDEO_DETAIL = "/:id";
+const EDIT_VIDEO = "/:id/edit";
+const DELETE_VIDEO = "/:id/delete";
+
 //GITHUB
 const GITHUB = "/auth/github/";
 const GITHUB_CALLBACK = "/auth/github/callback";
@@ -20,12 +27,9 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 const FACEBOOK = "/auth/facebook";
 const FACEBOOK_CALLBACK = "/auth/facebook/callback";
 
-//VIDEO ROUTES
-const VIDEOS = "/videos";
-const UPLOAD = "/upload";
-const VIDEO_DETAIL = "/:id";
-const EDIT_VIDEO = "/:id/edit";
-const DELETE_VIDEO = "/:id/delete";
+// API
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
 
 const routes = {
     home: HOME,
@@ -66,7 +70,9 @@ const routes = {
     githubLoginCallback: GITHUB_CALLBACK,
     me: ME,
     facebook: FACEBOOK,
-    facebookCallback: FACEBOOK_CALLBACK
+    facebookCallback: FACEBOOK_CALLBACK,
+    api: API,
+    registerView: REGISTER_VIEW
 };
 
 module.exports = routes;

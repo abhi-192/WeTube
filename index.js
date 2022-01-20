@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const globalRouter = require('./routers/globalRouter');
 const userRouter = require('./routers/userRouter');
 const videoRouter = require('./routers/videoRouter');
+const apiRouter = require('./routers/apiRouter');
 const routes = require('./routes');
 const middleware = require('./middlewares');
 const dotenv = require('dotenv');
@@ -24,19 +25,19 @@ const PORT = process.env.PORT || 3000;
 
 const handleListening = () => console.log("Listening on port http://localhost:3000");
 
-const handleRequest = (req,res) => {
+const handleRequest = (req, res) => {
     res.send("Hello from server");
 }
 
 const CookieStore = MongoStore(session);
 
 app.use(helmet());
-app.set('view engine',"pug");
+app.set('view engine', "pug");
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("uploads"));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded( { extended: true } ));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(middleware.localsMiddleware);
 app.use(middleware.uploadVideo);
 app.use(morgan("dev"));
@@ -44,7 +45,7 @@ app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUnintialized: false,
-    store: new CookieStore({ mongooseConnection: mongoose.connection });
+    store: new CookieStore({ mongooseConnection: mongoose.connection })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -54,5 +55,6 @@ app.use(passport.session());
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
+app.use(routes.api, apiRouter);
 
-app.listen(PORT, handleListening); 
+app.listen(PORT, handleListening);  
