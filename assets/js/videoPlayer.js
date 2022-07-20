@@ -77,7 +77,7 @@ const formatDate = seconds => {
 }
 
 function goFullScreen() {
-    //implemented with vend or prefix webkit
+    //implemented with vendor prefix webkit
     videoContainer.webkitRequestFullscreen();
     fullScrnBtn.innerHTML = `<i class="fas fa-compress"></i>`
     fullScrnBtn.removeEventListener("click", goFullScreen);

@@ -97,9 +97,7 @@ const deleteVideo = async (req, res) => {
         }
         else {
             await Video.findOneAndRemove({ _id: id });
-            // res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
         }
-
     }
     catch (error) {
         console.log('Error', error);

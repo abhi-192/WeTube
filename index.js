@@ -50,11 +50,25 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.get("/",handleRequest);
+
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
 app.use(routes.api, apiRouter);
 
-app.listen(PORT, handleListening);  
+app.listen(PORT, handleListening);
+
+/*
+
+VidMatch
+ - login, register, logout facility
+ - upload, watch and comment on videos
+ - livestream yourself
+ - login with github/ facebook
+ - search, edit and delete your own videos
+ - visit a user profile and vidoes uploaded by user
+ - Tech Stack - NodeJS, Express, MongoDB, Pug, babel, scss
+ - Source Code: github.com/abhi-192/projects/vidmatch
+
+ */
